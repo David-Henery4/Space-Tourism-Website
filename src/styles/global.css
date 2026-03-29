@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  /* Breakpoints */
+  --breakpoint-*: initial;
+  /* --breakpoint-mobile: 29.6875em; 475px */
+  /* --breakpoint-tablet: 42.1875em; 675px */
+  /* --breakpoint-laptop: 64em; 1024px */
+  /* --breakpoint-desktop: 70.25em; 1124px */
+
+  /* Spacing */
+  /* --spacing-layout-mob: 24px; */
+  /* --spacing-layout-tab: 40px; */
+
+  /* Colours */
+  --color-*: initial;
+  --color-primary: #0b0d17;
+  --color-secondary: #d0d6f9;
+  --color-white: #ffffff;
+
+  /* Grid-Columns */
+  --grid-template-columns-main-mobile: 24px repeat(12, 1fr) 24px;
+  --grid-template-columns-main-tablet: 40px repeat(12, 1fr) 40px;
+
+  /* Grid-Rows */
+  /* --grid-template-rows-LGDesktop: min-content; */
+
+  /* Fonts */
+  --font-bellefair: var(--bellefair);
+}
