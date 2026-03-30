@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./text-styles.css";
 
 @theme {
   /* Breakpoints */
@@ -19,12 +20,14 @@
   --color-white: #ffffff;
 
   /* Grid-Columns */
-  --grid-template-columns-main-mobile: 24px repeat(12, 1fr) 24px;
-  --grid-template-columns-main-tablet: 40px repeat(12, 1fr) 40px;
+  --grid-template-columns-main-mobile: 24px repeat(10, 1fr) 24px;
+  --grid-template-columns-main-tablet: 40px repeat(10, 1fr) 40px;
 
   /* Grid-Rows */
   /* --grid-template-rows-LGDesktop: min-content; */
 
   /* Fonts */
   --font-bellefair: var(--bellefair);
+  --font-barlow-condensed: var(--barlow-condensed);
+  --font-barlow: var(--barlow);
 }

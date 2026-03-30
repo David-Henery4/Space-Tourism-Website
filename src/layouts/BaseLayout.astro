@@ -2,7 +2,8 @@
 import "../styles/global.css";
 import { Font } from "astro:assets";
 const { pageTitle } = Astro.props;
-import Navigation from "../components/Navigation.astro";
+import { Navigation } from "../components";
+import navigationData from "../data/navigation-data/navigationData";
 ---
 
 <html lang="en">
@@ -13,10 +14,12 @@ import Navigation from "../components/Navigation.astro";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <Font cssVariable="--bellefair" />
+    <Font cssVariable="--barlow-condensed" />
+    <Font cssVariable="--barlow" />
     <title>{pageTitle}</title>
   </head>
-  <body>
-    <Navigation />
+  <body class="bg-primary text-white font-bellefair grid grid-cols-main-mobile">
+    <Navigation navLinks={navigationData} />
     <slot />
   </body>
 </html>

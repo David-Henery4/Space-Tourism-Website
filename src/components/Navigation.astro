@@ -1,25 +1,31 @@
 ---
+import Logo from "../svgs/shared/logo.svg";
+import BurgerIcon from "../svgs/shared/icon-hamburger.svg";
 type NavLinks = {
-  href: string;
   id: string;
-}
+  name: string;
+  href: string;
+};
 const { navLinks } = Astro.props as { navLinks: NavLinks[] };
-
 ---
 
-<nav>
-  <menu>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a href="/destination">Destination</a>
-    </li>
-    <li>
-      <a href="/crew">Crew</a>
-    </li>
-    <li>
-      <a href="/technology">Technology</a>
-    </li>
+<nav class="col-start-2 col-end-12 py-6">
+  <div class="w-full flex justify-between items-center">
+    <Logo />
+    <div class="hover:cursor-pointer">
+      <BurgerIcon />
+    </div>
+  </div>
+
+  <menu class="hidden">
+    {
+      navLinks.map((navItem) => {
+        return (
+          <li>
+            <a href={navItem.href}>{navItem.name}</a>
+          </li>
+        );
+      })
+    }
   </menu>
 </nav>

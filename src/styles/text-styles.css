@@ -1,0 +1,39 @@
+
+/* .heading {
+  color: var(--color-white);
+  font-family: var(--font-bellefair);
+} */
+
+.heading-5{
+  color: var(--color-secondary);
+  font-family: var(--font-barlow-condensed);
+  letter-spacing: 4.72px;
+  font-size: 28px;
+}
+
+.sub-heading-1{
+  font-family: var(--font-bellefair);
+  font-size: 28px;
+  color: var(--color-white);
+}
+
+.sub-heading-2{
+  font-size: 14px;
+  letter-spacing: 2.36px;
+  font-family: var(--font-barlow-condensed);
+  color: var(--color-white);
+}
+
+.nav-text{
+  font-family: var(--font-barlow-condensed);
+  color: var(--color-white);
+  font-size: 16px;
+  letter-spacing: 2.7px;
+}
+
+.base-text{
+  font-family: var(--font-barlow);
+  font-size: 18px;
+  line-height: 32px;
+  color: var(--color-white);
+}

@@ -9,7 +9,17 @@ export default defineConfig({
     {
       provider: fontProviders.google(),
       name: "Bellefair",
-      cssVariable: "--bellefair"
+      cssVariable: "--bellefair",
+    },
+    {
+      provider: fontProviders.google(),
+      name: "Barlow Condensed",
+      cssVariable: "--barlow-condensed",
+    },
+    {
+      provider: fontProviders.google(),
+      name: "Barlow ",
+      cssVariable: "--barlow",
     },
   ],
 });
