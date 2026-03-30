@@ -1,8 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { Header } from "../components";
+import { Image } from "astro:assets";
+import homeBgImageMobile from "../assets/bg-images/home/background-home-mobile.jpg";
 ---
 
-<BaseLayout pageTitle="Astro | Home" >
-  <Header/>
+<BaseLayout pageTitle="Astro | Home">
+  <Image
+    class="absolute -z-1 top-0 left-0 w-full h-full object-center object-cover"
+    src={homeBgImageMobile}
+    alt=""
+  />
+  <Header />
 </BaseLayout>

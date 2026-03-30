@@ -8,7 +8,6 @@
   color: var(--color-secondary);
   font-family: var(--font-barlow-condensed);
   letter-spacing: 4.72px;
-  font-size: 28px;
 }
 
 .sub-heading-1{
@@ -33,7 +32,11 @@
 
 .base-text{
   font-family: var(--font-barlow);
-  font-size: 18px;
-  line-height: 32px;
-  color: var(--color-white);
+  font-size: 15px;
+  line-height: 25px;
+  color: var(--color-secondary);
+
+  /* On larger screens */
+  /* font-size: 18px; */
+  /* line-height: 32px; */
 }
