@@ -1,31 +1,22 @@
 ---
 import Logo from "../assets/svgs/logo.svg";
 import BurgerIcon from "../assets/svgs/icon-hamburger.svg";
-type NavLinks = {
-  id: string;
-  name: string;
-  href: string;
-};
-const { navLinks } = Astro.props as { navLinks: NavLinks[] };
+import NavigationLinksList from "./navigation/NavigationLinksList.astro";
 ---
 
-<nav class="col-start-2 col-end-12 py-6">
-  <div class="w-full flex justify-between items-center">
-    <Logo />
-    <div class="hover:cursor-pointer">
+<nav
+  class="col-start-1 col-end-13 grid grid-cols-main-mobile mobile:grid-cols-main-tablet"
+>
+  <div
+    class="w-full py-6 col-start-2 col-end-12 flex justify-between items-center mobile-large:p-0 mobile-large:col-end-13"
+  >
+    <a href="/" class="mobile-large:py-6">
+      <Logo />
+    </a>
+    <div class="hover:cursor-pointer mobile-large:hidden">
       <BurgerIcon />
     </div>
-  </div>
 
-  <menu class="hidden">
-    {
-      navLinks.map((navItem) => {
-        return (
-          <li>
-            <a href={navItem.href}>{navItem.name}</a>
-          </li>
-        );
-      })
-    }
-  </menu>
+    <NavigationLinksList />
+  </div>
 </nav>

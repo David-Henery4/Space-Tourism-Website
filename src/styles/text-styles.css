@@ -7,7 +7,7 @@
 .heading-5{
   color: var(--color-secondary);
   font-family: var(--font-barlow-condensed);
-  letter-spacing: 4.72px;
+  letter-spacing: 2.7px;
 }
 
 .sub-heading-1{
@@ -35,8 +35,15 @@
   font-size: 15px;
   line-height: 25px;
   color: var(--color-secondary);
+}
 
-  /* On larger screens */
-  /* font-size: 18px; */
-  /* line-height: 32px; */
+@media (min-width: 524px) {
+  .base-text {
+    font-size: 16px;
+    line-height: 28px;
+  }
+  .heading-5{
+    letter-spacing: 3.38px;
+    font-size: 20px;
+  }
 }

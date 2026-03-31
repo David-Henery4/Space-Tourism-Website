@@ -3,7 +3,6 @@ import "../styles/global.css";
 import { Font } from "astro:assets";
 const { pageTitle } = Astro.props;
 import { Navigation } from "../components";
-import navigationData from "../data/navigation-data/navigationData";
 ---
 
 <html lang="en">
@@ -18,8 +17,8 @@ import navigationData from "../data/navigation-data/navigationData";
     <Font cssVariable="--barlow" />
     <title>{pageTitle}</title>
   </head>
-  <body class="bg-primary text-white font-bellefair grid grid-cols-main-mobile">
-    <Navigation navLinks={navigationData} />
+  <body class="bg-primary relative text-white font-bellefair grid grid-cols-main-mobile mobile:grid-cols-main-tablet">
+    <Navigation/>
     <slot />
   </body>
 </html>

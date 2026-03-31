@@ -4,10 +4,9 @@
 @theme {
   /* Breakpoints */
   --breakpoint-*: initial;
-  /* --breakpoint-mobile: 29.6875em; 475px */
-  /* --breakpoint-tablet: 42.1875em; 675px */
-  /* --breakpoint-laptop: 64em; 1024px */
-  /* --breakpoint-desktop: 70.25em; 1124px */
+  --breakpoint-mobile: 32.75em; /* 524px */
+  --breakpoint-mobile-large: 42.5em; /* 680px */
+
 
   /* Spacing */
   /* --spacing-layout-mob: 24px; */
@@ -21,7 +20,7 @@
 
   /* Grid-Columns */
   --grid-template-columns-main-mobile: 24px repeat(10, 1fr) 24px;
-  --grid-template-columns-main-tablet: 40px repeat(10, 1fr) 40px;
+  --grid-template-columns-main-tablet: 48px repeat(10, 1fr) 48px;
 
   /* Grid-Rows */
   /* --grid-template-rows-LGDesktop: min-content; */

@@ -3,13 +3,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { Header } from "../components";
 import { Image } from "astro:assets";
 import homeBgImageMobile from "../assets/bg-images/home/background-home-mobile.jpg";
+import homeBgImageTablet from "../assets/bg-images/home/background-home-tablet.jpg";
+import homeBgImageDesktop from "../assets/bg-images/home/background-home-desktop.jpg";
+import { BackgroundImages } from "../components";
 ---
 
 <BaseLayout pageTitle="Astro | Home">
-  <Image
-    class="absolute -z-1 top-0 left-0 w-full h-full object-center object-cover"
-    src={homeBgImageMobile}
-    alt=""
+  <BackgroundImages
+    desktopImage={homeBgImageDesktop}
+    mobileImage={homeBgImageMobile}
+    tabletImage={homeBgImageTablet}
   />
   <Header />
 </BaseLayout>

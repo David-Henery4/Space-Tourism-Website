@@ -1,0 +1,20 @@
+---
+import navigationData from "../../data/navigation-data/navigationData";
+---
+
+<menu
+  class="hidden mobile-large:flex h-full justify-center items-center px-12 gap-9 font-barlow-condensed uppercase text-sm tracking-[2.36px] bg-white/5"
+>
+  {
+    navigationData.map((navItem) => {
+      // Temp for styling
+      const isActive = navItem.href === "/";
+      return (
+        <li class="relative h-full grid place-items-center">
+          <a href={navItem.href}>{navItem.name}</a>
+          {isActive && <div class="absolute bottom-0 h-0.75 w-full bg-white" />}
+        </li>
+      );
+    })
+  }
+</menu>
