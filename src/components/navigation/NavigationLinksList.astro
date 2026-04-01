@@ -3,15 +3,21 @@ import navigationData from "../../data/navigation-data/navigationData";
 ---
 
 <menu
-  class="hidden mobile-large:flex h-full justify-between items-center px-12 gap-9 font-barlow-condensed uppercase text-sm tracking-[2.36px] bg-white/5 backdrop-blur-[82px] tablet:pr-[106.5px] laptop:col-start-3 laptop:col-end-6 laptop:row-1"
+  class="hidden mobile-large:flex h-full justify-between items-center px-12 gap-9 font-barlow-condensed uppercase text-sm tracking-[2.36px] bg-white/5 backdrop-blur-[82px] tablet:pr-[106.5px] laptop:text-base laptop:tracking-[2.7px] laptop:col-start-3 laptop:col-end-6 laptop:row-1 desktop:pr-41.25 desktop:pl-16 desktop:gap-3.75 desktop:justify-between desktop-xl-large:pl-30.75"
 >
   {
-    navigationData.map((navItem) => {
+    navigationData.map((navItem, i) => {
       // Temp for styling
       const isActive = navItem.href === "/";
       return (
         <li class="relative h-full grid place-items-center">
-          <a href={navItem.href}>{navItem.name}</a>
+          <a
+            href={navItem.href}
+            class="inline-flex justify-start items-center gap-2 desktop-xl-large:gap-2.75"
+          >
+            <span class="hidden desktop:block font-bold">{`0${i}`}</span>
+            {navItem.name}
+          </a>
           {isActive && <div class="absolute bottom-0 h-0.75 w-full bg-white" />}
         </li>
       );
