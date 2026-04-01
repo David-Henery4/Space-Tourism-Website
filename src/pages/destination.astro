@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import destinationBgImageMobile from "../assets/bg-images/destination/background-destination-mobile.jpg";
+import destinationBgImageTablet from "../assets/bg-images/destination/background-destination-tablet.jpg";
+import destinationBgImageDesktop from "../assets/bg-images/destination/background-destination-desktop.jpg";
+import { BackgroundImages } from "../components";
+---
+
+<BaseLayout>
+  <BackgroundImages
+    mobileImage={destinationBgImageMobile}
+    tabletImage={destinationBgImageTablet}
+    desktopImage={destinationBgImageDesktop}
+  />
+  <main>
+    <h1>Moon</h1>
+  </main>
+</BaseLayout>
