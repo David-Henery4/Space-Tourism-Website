@@ -5,14 +5,17 @@ import NavigationLinksList from "./navigation/NavigationLinksList.astro";
 ---
 
 <nav
-  class="col-start-1 col-end-13 grid grid-cols-main-mobile mobile:grid-cols-main-tablet tablet:grid-cols-main-laptop tablet:mt-5"
+  class="col-start-1 col-end-13 grid grid-cols-main-mobile mobile:grid-cols-main-tablet tablet:grid-cols-main-laptop tablet:mt-5 laptop:mt-7.5"
 >
   <div
-    class="w-full py-6 col-start-2 col-end-12 flex justify-between items-center mobile-large:p-0 mobile-large:col-end-13"
+    class="w-full py-6 col-start-2 col-end-12 flex justify-between items-center mobile-large:p-0 mobile-large:col-end-13 laptop:grid laptop:grid-cols-navigation-laptop laptop:col-start-1"
   >
-    <a href="/" class="mobile-large:py-6">
+    <a href="/" class="mobile-large:py-6 laptop:pl-9.5">
       <Logo />
     </a>
+
+    <div class="hidden laptop:block w-full h-px bg-white/25 col-start-2 col-end-4 row-1 z-10"/>
+
     <div class="hover:cursor-pointer mobile-large:hidden">
       <BurgerIcon />
     </div>

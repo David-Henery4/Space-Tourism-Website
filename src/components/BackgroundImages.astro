@@ -15,12 +15,12 @@ const { desktopImage, mobileImage, tabletImage } = Astro.props;
   alt=""
 />
 <Image
-  class="absolute -z-1 top-0 left-0 w-full h-full object-center object-cover hidden mobile:block"
+  class="absolute -z-1 top-0 left-0 w-full h-full object-center object-cover hidden mobile:block laptop:hidden"
   src={tabletImage}
   alt=""
 />
 <Image
-  class="absolute -z-1 top-0 left-0 w-full h-full object-center object-cover hidden"
-  src={tabletImage}
+  class="absolute -z-1 top-0 left-0 w-full h-full object-center object-cover hidden laptop:block"
+  src={desktopImage}
   alt=""
 />

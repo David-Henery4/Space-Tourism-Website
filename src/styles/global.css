@@ -7,6 +7,7 @@
   --breakpoint-mobile: 32.75em; /* 524px */
   --breakpoint-mobile-large: 42.5em; /* 680px */
   --breakpoint-tablet: 52.5em; /* 840px */
+  --breakpoint-laptop: 66.75em; /* 1068px */
 
 
   /* Spacing */
@@ -23,9 +24,10 @@
   --grid-template-columns-main-mobile: 24px repeat(10, 1fr) 24px;
   --grid-template-columns-main-tablet: 48px repeat(10, 1fr) 48px;
   --grid-template-columns-main-laptop: 106.5px repeat(10, 1fr) 106.5px;
+  --grid-template-columns-navigation-laptop: 106.5px 1fr 15px 1fr 106.5px;
 
   /* Grid-Rows */
-  /* --grid-template-rows-LGDesktop: min-content; */
+  --grid-template-rows-main-laptop: min-content;
 
   /* Fonts */
   --font-bellefair: var(--bellefair);
