@@ -21,6 +21,7 @@
   --color-primary: #0b0d17;
   --color-secondary: #d0d6f9;
   --color-white: #ffffff;
+  --color-white-faded: #383B4B;
 
   /* Grid-Columns */
   --grid-template-columns-main-mobile: 24px repeat(10, 1fr) 24px;

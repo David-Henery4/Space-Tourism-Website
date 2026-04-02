@@ -4,6 +4,7 @@ import destinationBgImageMobile from "../assets/bg-images/destination/background
 import destinationBgImageTablet from "../assets/bg-images/destination/background-destination-tablet.jpg";
 import destinationBgImageDesktop from "../assets/bg-images/destination/background-destination-desktop.jpg";
 import { BackgroundImages } from "../components";
+import { TextContent, ImageContent } from "../components/destination";
 ---
 
 <BaseLayout>
@@ -12,7 +13,8 @@ import { BackgroundImages } from "../components";
     tabletImage={destinationBgImageTablet}
     desktopImage={destinationBgImageDesktop}
   />
-  <main>
-    <h1>Moon</h1>
+  <main class="py-6 grid gap-6.5 col-start-2 col-end-12 text-center">
+    <ImageContent/>
+    <TextContent/>
   </main>
 </BaseLayout>

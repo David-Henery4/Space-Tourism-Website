@@ -1,0 +1,20 @@
+---
+import destinationTabs from "@data/destination-data/destinationTabs.ts";
+---
+
+<menu class="flex justify-center items-center gap-6 sub-heading-2">
+  {
+    destinationTabs.map((destination) => {
+      // Temp
+      const isActive = destination.name === "moon";
+      return (
+        <li class="relative pb-2">
+          <button class="uppercase hover:cursor-pointer">
+            {destination.name}
+          </button>
+          {isActive && <div class="absolute bottom-0 w-full h-0.75 bg-white" />}
+        </li>
+      );
+    })
+  }
+</menu>
