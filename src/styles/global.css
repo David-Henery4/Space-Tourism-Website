@@ -30,6 +30,9 @@
   --grid-template-columns-main-desktop: 165px repeat(10, 1fr) 165px;
   --grid-template-columns-navigation-laptop: 106.5px 1fr 15px 1fr 106.5px;
   --grid-template-columns-navigation-desktop: 165px 1fr 30px 1fr 165px;
+  --grid-template-columns-basic-2-cols: 1fr 1fr;
+  --grid-template-columns-basic-6-cols: repeat(6,1fr);
+  /**/
 
   /* Grid-Rows */
   --grid-template-rows-main-laptop: min-content;

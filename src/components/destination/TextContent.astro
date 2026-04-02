@@ -2,12 +2,18 @@
 import { Tabs } from "./text-content";
 ---
 
-<div class="w-full">
+<div
+  class="w-full laptop:grid laptop:grid-cols-basic-6-cols laptop:text-left laptop:pt-21.25"
+>
   <Tabs />
 
-  <div class="mt-5 mb-8 mobile:mt-8 mobile:mb-12">
-    <h1 class="text-[56px] mobile:text-[80px]">MOON</h1>
-    <p class="base-text mx-auto max-w-81.75 mobile:max-w-143.25">
+  <div
+    class="mt-5 mb-8 mobile:mt-8 mobile:mb-12 laptop:col-start-2 laptop:col-end-7 laptop:mt-9.25 laptop:mb-13.5"
+  >
+    <h1 class="text-[56px] mobile:text-[80px] laptop:text-[100px]">MOON</h1>
+    <p
+      class="base-text mx-auto max-w-81.75 mobile:max-w-143.25 laptop:max-w-111 laptop:mt-3.5 laptop:ml-0"
+    >
       See our planet as you’ve never seen it before. A perfect relaxing trip
       away to help regain perspective and come back refreshed. While you’re
       there, take in some history by visiting the Luna 2 and Apollo 11 landing
@@ -16,7 +22,7 @@ import { Tabs } from "./text-content";
   </div>
 
   <div
-    class="uppercase py-8 flex flex-col justify-center items-center gap-8 border-t border-t-white-faded mobile:flex-row mobile:gap-12 mobile:py-7"
+    class="uppercase py-8 flex flex-col justify-center items-center gap-8 border-t border-t-white-faded mobile:flex-row mobile:gap-12 mobile:py-7 laptop:col-start-2 laptop:col-end-7 laptop:justify-start"
   >
     <div class="">
       <h3 class="sub-heading-2">AVG. DISTANCE</h3>
