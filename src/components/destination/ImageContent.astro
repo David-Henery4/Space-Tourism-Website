@@ -3,13 +3,13 @@ import { Image } from "astro:assets";
 import moonImage from "../../assets/content-images/image-moon.webp";
 ---
 
-<div class="w-full grid gap-8">
-  <h2 class="nav-text uppercase inline-flex gap-4.5 justify-center">
+<div class="w-full grid gap-8 mobile:gap-15">
+  <h2 class="nav-text uppercase inline-flex gap-4.5 justify-center mobile:justify-start">
     <span class="text-white/25">01</span>
     Pick your destination
   </h2>
 
-  <div>
+  <div class="max-w-42.5 mx-auto mobile:max-w-75">
     <Image src={moonImage} alt="" />
   </div>
 </div>
