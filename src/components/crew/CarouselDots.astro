@@ -1,0 +1,32 @@
+---
+const tempSlideData = [
+  {
+    id: 1,
+    isActive: true,
+  },
+  {
+    id: 2,
+    isActive: false,
+  },
+  {
+    id: 3,
+    isActive: false,
+  },
+  {
+    id: 4,
+    isActive: false,
+  },
+];
+---
+
+<div class="flex justify-center items-center gap-4">
+  {
+    tempSlideData.map((item) => {
+      return (
+        <button
+          class={`w-2.5 h-2.5 rounded-full ${item.isActive ? "bg-white" : "bg-white/15"}`}
+        />
+      );
+    })
+  }
+</div>

@@ -1,0 +1,14 @@
+---
+interface Props {
+  pageNumber: string;
+  title: string;
+}
+const { pageNumber, title } = Astro.props;
+---
+
+<h2
+  class="nav-text uppercase inline-flex gap-4.5 justify-center mobile:justify-start"
+>
+  <span class="text-white/25">{pageNumber}</span>
+  {title}
+</h2>

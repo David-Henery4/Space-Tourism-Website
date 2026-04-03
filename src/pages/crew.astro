@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { BackgroundImages, PageSubHeading } from "../components";
+import crewBgImageMobile from "../assets/bg-images/crew/background-crew-mobile.jpg";
+import crewBgImageTablet from "../assets/bg-images/crew/background-crew-tablet.jpg";
+import crewBgImageDesktop from "../assets/bg-images/crew/background-crew-desktop.jpg";
+import { CrewImage, CarouselDots, CrewMemberInfo } from "@components/crew";
+---
+
+<BaseLayout>
+  <BackgroundImages
+    mobileImage={crewBgImageMobile}
+    tabletImage={crewBgImageTablet}
+    desktopImage={crewBgImageDesktop}
+  />
+  <main class="col-start-2 col-end-12 grid pt-6 pb-26 text-center gap-8">
+    <div>
+      <PageSubHeading pageNumber="02" title="meet your crew" />
+    </div>
+    <CrewImage/>
+    <CarouselDots/>
+    <CrewMemberInfo/>
+  </main>
+</BaseLayout>
