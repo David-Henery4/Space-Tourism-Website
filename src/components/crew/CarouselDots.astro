@@ -19,12 +19,14 @@ const tempSlideData = [
 ];
 ---
 
-<div class="flex justify-center items-center gap-4">
+<div
+  class="flex justify-center items-center gap-4 mobile:row-start-3 mobile:row-end-4 laptop:self-start laptop:justify-self-start"
+>
   {
     tempSlideData.map((item) => {
       return (
         <button
-          class={`w-2.5 h-2.5 rounded-full ${item.isActive ? "bg-white" : "bg-white/15"}`}
+          class={`w-2.5 h-2.5 rounded-full ${item.isActive ? "bg-white" : "bg-white/15"} hover:cursor-pointer laptop:w-3.75 laptop:h-3.75`}
         />
       );
     })
