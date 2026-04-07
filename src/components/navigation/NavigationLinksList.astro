@@ -1,5 +1,6 @@
 ---
 import navigationData from "../../data/navigation-data/navigationData";
+const astro = Astro.url.pathname;
 ---
 
 <menu
@@ -7,8 +8,7 @@ import navigationData from "../../data/navigation-data/navigationData";
 >
   {
     navigationData.map((navItem, i) => {
-      // Temp for styling
-      const isActive = navItem.href === "/";
+      const isActive = navItem.href === astro;
       return (
         <li class="relative h-full grid place-items-center">
           <a
