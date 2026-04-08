@@ -1,15 +1,24 @@
 ---
-
+interface Props {
+  jobTitle: string;
+  name: string;
+  description: string;
+}
+const { description, jobTitle, name } = Astro.props;
 ---
 
 <div class="laptop:text-left">
-  <h3 class="text-base uppercase text-white/50 mobile:text-2xl laptop:text-[32px]">Commander</h3>
-  <h1 class="text-2xl uppercase text-white mt-2 mobile:text-[40px] laptop:text-[56px]">
-    Douglas Hurley
+  <h3
+    class="text-base uppercase text-white/50 mobile:text-2xl laptop:text-[32px]"
+  >
+    {jobTitle}
+  </h3>
+  <h1
+    class="text-2xl uppercase text-white mt-2 mobile:text-[40px] laptop:text-[56px]"
+  >
+    {name}
   </h1>
   <p class="base-text mt-4 max-w-114.5 mx-auto laptop:ml-0 laptop:mt-7">
-    Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and
-    former NASA astronaut. He launched into space for the third time as
-    commander of Crew Dragon Demo-2.
+    {description}
   </p>
 </div>

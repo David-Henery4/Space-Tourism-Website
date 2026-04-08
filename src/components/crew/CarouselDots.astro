@@ -1,32 +1,27 @@
 ---
-const tempSlideData = [
-  {
-    id: 1,
-    isActive: true,
-  },
-  {
-    id: 2,
-    isActive: false,
-  },
-  {
-    id: 3,
-    isActive: false,
-  },
-  {
-    id: 4,
-    isActive: false,
-  },
-];
+import { getCollection } from "astro:content";
+const crew = await getCollection("crewCollection")
+const linksArray = crew
+  .map((crewData) => {
+    return {
+      id: crewData.data.id,
+      href: `/crew/${crewData.data.slug}`,
+    };
+  })
+  .sort((a, b) => b.id - a.id);
+const currentUrl = Astro.url.pathname;
 ---
 
 <div
-  class="flex justify-center items-center gap-4 mobile:row-start-3 mobile:row-end-4 laptop:self-start laptop:justify-self-start"
+  class="flex justify-center items-center gap-4 mobile:row-start-3 mobile:row-end-4 laptop:self-start laptop:justify-self-start laptop:pb-24"
 >
   {
-    tempSlideData.map((item) => {
+    linksArray.map((item) => {
+      const isActive = item.href === currentUrl;
       return (
-        <button
-          class={`w-2.5 h-2.5 rounded-full ${item.isActive ? "bg-white" : "bg-white/15"} hover:cursor-pointer laptop:w-3.75 laptop:h-3.75`}
+        <a
+          href={item.href}
+          class={`w-2.5 h-2.5 rounded-full ${isActive ? "bg-white" : "bg-white/15"} hover:cursor-pointer laptop:w-3.75 laptop:h-3.75`}
         />
       );
     })

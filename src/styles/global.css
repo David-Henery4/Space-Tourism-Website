@@ -37,6 +37,7 @@
   /* Grid-Rows */
   --grid-template-rows-main-laptop: min-content;
   --grid-template-rows-3-min: min-content min-content min-content;
+  --grid-template-rows-crew: min-content min-content auto;
 
   /* Fonts */
   --font-bellefair: var(--bellefair);

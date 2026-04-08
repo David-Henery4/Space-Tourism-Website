@@ -1,0 +1,43 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+export const getStaticPaths = (async () => {
+  const crew = await getCollection("crewCollection");
+  return crew.map((crewData) => {
+    return {
+      params: {
+        slug: crewData.data.slug,
+      },
+      props: { crewData },
+    };
+  });
+}) satisfies GetStaticPaths;
+const { crewData: {data} } = Astro.props;
+
+//
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { BackgroundImages, PageSubHeading } from "../../components";
+import crewBgImageMobile from "../../assets/bg-images/crew/background-crew-mobile.jpg";
+import crewBgImageTablet from "../../assets/bg-images/crew/background-crew-tablet.jpg";
+import crewBgImageDesktop from "../../assets/bg-images/crew/background-crew-desktop.jpg";
+import { CrewImage, CarouselDots, CrewMemberInfo } from "../../components/crew";
+console.log("Data: ", data)
+---
+
+<BaseLayout>
+  <BackgroundImages
+    mobileImage={crewBgImageMobile}
+    tabletImage={crewBgImageTablet}
+    desktopImage={crewBgImageDesktop}
+  />
+  <main
+    class="col-start-2 col-end-12 grid pt-6 pb-26 text-center gap-8 mobile:pb-0 mobile:pt-10 mobile:gap-10 laptop:grid-cols-basic-2-cols laptop:grid-rows-crew laptop:pt-19 laptop:gap-y-15 desktop-xl-large:gap-y-20"
+  >
+    <div class="mobile:text-left mobile:mb-5">
+      <PageSubHeading pageNumber="02" title="meet your crew" />
+    </div>
+    <CrewImage image={data.profileImage}  />
+    <CarouselDots />
+    <CrewMemberInfo name={data.name} jobTitle={data.jobTitle} description={data.description} />
+  </main>
+</BaseLayout>

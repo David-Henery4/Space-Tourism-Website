@@ -1,13 +1,18 @@
 ---
 import { Image } from "astro:assets";
-import crewImage1 from "../../assets/content-images/crew/image-douglas-hurley.webp";
+// import crewImage1 from "../../assets/content-images/crew/image-douglas-hurley.webp";
+import { type ImageMetadata } from "astro";
+interface Props {
+  image: ImageMetadata
+}
+const {image} = Astro.props
 ---
 
 <div
-  class="w-full border-b border-white/15 mobile:row-start-4 mobile:row-end-5 mobile:border-0 laptop:row-start-1 laptop:row-end-4 laptop:col-start-2 laptop:col-end-3"
+  class="w-full border-b border-white/15 mobile:row-start-4 mobile:row-end-5 mobile:border-0 laptop:self-end laptop:row-start-1 laptop:row-end-4 laptop:col-start-2 laptop:col-end-3"
 >
   <Image
-    src={crewImage1}
+    src={image}
     alt=""
     class="w-full max-w-44.25 mx-auto object-center object-cover mobile:max-w-79 mobile:mx-auto laptop:mr-0 mobile-large:max-w-102.25 desktop:max-w-126.5"
   />
