@@ -37,7 +37,10 @@ const technologyCollection = defineCollection({
       name: z.string(),
       description: z.string(),
       slug: z.string(),
-      image: image(),
+      image: z.object({
+        portrait: image(),
+        landscape: image(),
+      }),
     }),
 });
 

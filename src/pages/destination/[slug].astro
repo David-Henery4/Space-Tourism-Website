@@ -2,18 +2,18 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 export const getStaticPaths = (async () => {
-  const crew = await getCollection("destinationCollection");
-  return crew.map((crewData) => {
+  const desination = await getCollection("destinationCollection");
+  return desination.map((desinationData) => {
     return {
       params: {
-        slug: crewData.data.slug,
+        slug: desinationData.data.slug,
       },
-      props: { crewData },
+      props: { desinationData },
     };
   });
 }) satisfies GetStaticPaths;
 const {
-  crewData: { data },
+  desinationData: { data },
 } = Astro.props;
 //
 import BaseLayout from "../../layouts/BaseLayout.astro";

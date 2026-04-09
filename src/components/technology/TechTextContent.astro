@@ -1,18 +1,19 @@
 ---
-
+interface Props {
+  title: string;
+  description: string;
+}
+const { description, title } = Astro.props;
 ---
 
 <div>
   <h3 class="sub-heading-2">THE TERMINOLOGY…</h3>
   <h1
-    class="text-2xl mt-2 mobile:text-[40px] mobile:mt-4 laptop:text-[48px] desktop-xl-large:text-[56px]"
+    class="text-2xl mt-2 uppercase mobile:text-[40px] mobile:mt-4 laptop:text-[48px] desktop-xl-large:text-[56px]"
   >
-    LAUNCH VEHICLE
+    {title}
   </h1>
   <p class="base-text mt-4 max-w-114.5 mx-auto laptop:ml-0">
-    A launch vehicle or carrier rocket is a rocket-propelled vehicle used to
-    carry a payload from Earth's surface to space, usually to Earth orbit or
-    beyond. Our WEB-X carrier rocket is the most powerful in operation. Standing
-    150 metres tall, it's quite an awe-inspiring sight on the launch pad!
+    {description}
   </p>
 </div>

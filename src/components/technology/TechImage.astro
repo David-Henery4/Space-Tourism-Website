@@ -1,18 +1,25 @@
 ---
 import { Image } from "astro:assets";
-import spaceLaunchImageLandscape from "@assets/content-images/technology/image-launch-vehicle-landscape.jpg";
-import spaceLaunchImagePortrait from "@assets/content-images/technology/image-launch-vehicle-portrait.jpg";
+import type { ImageMetadata } from "astro";
+interface Props {
+  image: {
+    portrait: ImageMetadata;
+    landscape: ImageMetadata;
+  };
+}
+const { image } = Astro.props;
+
 ---
 
 <div class="w-full col-start-1 col-end-13 laptop:col-start-9 laptop:col-end-13">
   <Image
     class="w-full max-h-77.5 object-center object-fill laptop:hidden"
-    src={spaceLaunchImageLandscape}
+    src={image.landscape}
     alt=""
   />
   <Image
     class="hidden laptop:block w-full object-center object-fill h-104.5 desktop:h-131.75"
-    src={spaceLaunchImagePortrait}
+    src={image.portrait}
     alt=""
   />
 </div>

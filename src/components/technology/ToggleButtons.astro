@@ -1,20 +1,26 @@
 ---
-
+import { getCollection } from "astro:content";
+const technologyList = await getCollection("technologyCollection");
+interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
 ---
 
 <div
   class="flex justify-center items-center gap-4 laptop:justify-start desktop:flex-col desktop:gap-8 desktop:text-2xl desktop-xl-large:text-[32px]"
 >
-  <button
-    class="w-10 h-10 rounded-full border text-primary bg-white hover:cursor-pointer mobile:w-15 mobile:h-15 laptop:h-17.5 laptop:w-17.5 desktop-xl-large:w-20 desktop-xl-large:h-20"
-    >1</button
-  >
-  <button
-    class="w-10 h-10 rounded-full border text-white border-white/25 hover:cursor-pointer mobile:w-15 mobile:h-15 laptop:h-17.5 laptop:w-17.5 desktop-xl-large:w-20 desktop-xl-large:h-20"
-    >2</button
-  >
-  <button
-    class="w-10 h-10 rounded-full border text-white border-white/25 hover:cursor-pointer mobile:w-15 mobile:h-15 laptop:h-17.5 laptop:w-17.5 desktop-xl-large:w-20 desktop-xl-large:h-20"
-    >3</button
-  >
+  {
+    technologyList.map((techItem, index) => {
+      const isActive = slug === techItem.data.slug;
+      return (
+        <a
+          href={`/technology/${techItem.data.slug}`}
+          class={`w-10 h-10 inline-grid place-items-center rounded-full border hover:cursor-pointer mobile:w-15 mobile:h-15 laptop:h-17.5 laptop:w-17.5 desktop-xl-large:w-20 desktop-xl-large:h-20 ${isActive ? "bg-white text-primary" : "text-white"}`}
+        >
+          {index + 1}
+        </a>
+      );
+    })
+  }
 </div>
