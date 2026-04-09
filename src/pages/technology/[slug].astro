@@ -1,0 +1,20 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+export const getStaticPaths = (async () => {
+  const crew = await getCollection("technologyCollection");
+  return crew.map((crewData) => {
+    return {
+      params: {
+        slug: crewData.data.slug,
+      },
+      props: { crewData },
+    };
+  });
+}) satisfies GetStaticPaths;
+const {
+  crewData: { data },
+} = Astro.props;
+---
+
+

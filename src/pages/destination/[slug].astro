@@ -1,0 +1,39 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+export const getStaticPaths = (async () => {
+  const crew = await getCollection("destinationCollection");
+  return crew.map((crewData) => {
+    return {
+      params: {
+        slug: crewData.data.slug,
+      },
+      props: { crewData },
+    };
+  });
+}) satisfies GetStaticPaths;
+const {
+  crewData: { data },
+} = Astro.props;
+//
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import destinationBgImageMobile from "../../assets/bg-images/destination/background-destination-mobile.jpg";
+import destinationBgImageTablet from "../../assets/bg-images/destination/background-destination-tablet.jpg";
+import destinationBgImageDesktop from "../../assets/bg-images/destination/background-destination-desktop.jpg";
+import { BackgroundImages } from "../../components";
+import { TextContent, ImageContent } from "../../components/destination";
+---
+
+<BaseLayout>
+  <BackgroundImages
+    mobileImage={destinationBgImageMobile}
+    tabletImage={destinationBgImageTablet}
+    desktopImage={destinationBgImageDesktop}
+  />
+  <main
+    class="py-6 grid gap-6.5 col-start-2 col-end-12 text-center mobile:gap-13.25 mobile:py-10 laptop:grid-cols-basic-2-cols laptop:py-19"
+  >
+    <ImageContent image={data.image} />
+    <TextContent {...data} />
+  </main>
+</BaseLayout>

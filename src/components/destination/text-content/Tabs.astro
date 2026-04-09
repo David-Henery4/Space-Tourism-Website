@@ -1,19 +1,24 @@
 ---
-import destinationTabs from "@data/destination-data/destinationTabs.ts";
+import { getCollection } from "astro:content";
+const destinations = await getCollection("destinationCollection");
+interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
 ---
 
 <menu
   class="flex justify-center items-center gap-6 sub-heading-2 laptop:col-start-2 laptop:col-end-7 laptop:justify-start"
 >
   {
-    destinationTabs.map((destination) => {
+    destinations.map((destination) => {
       // Temp
-      const isActive = destination.name === "moon";
+      const isActive = destination.data.slug === slug;
       return (
         <li class="relative pb-2 mobile:pb-3">
-          <button class="uppercase hover:cursor-pointer">
-            {destination.name}
-          </button>
+          <a href={`/destination/${destination.data.slug}`} class="uppercase hover:cursor-pointer">
+            {destination.data.name}
+          </a>
           {isActive && <div class="absolute bottom-0 w-full h-0.75 bg-white" />}
         </li>
       );

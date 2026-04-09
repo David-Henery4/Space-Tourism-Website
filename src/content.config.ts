@@ -15,6 +15,34 @@ const crewCollection = defineCollection({
     }),
 });
 
+const destinationCollection = defineCollection({
+  loader: glob({ base: "./src/content/destination", pattern: "**/*.{md,mdx}" }),
+  schema: ({ image }) =>
+    z.object({
+      id: z.number(),
+      name: z.string(),
+      description: z.string(),
+      slug: z.string(),
+      distance: z.string(),
+      travelTime: z.string(),
+      image: image(),
+    }),
+});
+
+const technologyCollection = defineCollection({
+  loader: glob({ base: "./src/content/technology", pattern: "**/*.{md,mdx}" }),
+  schema: ({ image }) =>
+    z.object({
+      id: z.number(),
+      name: z.string(),
+      description: z.string(),
+      slug: z.string(),
+      image: image(),
+    }),
+});
+
 export const collections = {
   crewCollection,
+  destinationCollection,
+  technologyCollection
 };
