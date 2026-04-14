@@ -1,0 +1,120 @@
+@view-transition {
+  navigation: auto;
+}
+
+/* @keyframes move-out {
+  from {
+    transform: translateY(0%);
+  }
+
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes move-in {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+} */
+
+/* ::view-transition-old(root) {
+  animation: 5s ease-in both move-out;
+} */
+
+/* ::view-transition-new(root) {
+  animation: 5s ease-in both move-in;
+} */
+
+/* ::view-transition-group(root) {
+  animation: 5s ease-in both move-in;
+  z-index: 5800;
+} */
+
+/* #navigation-bar {
+  view-transition-name: navigation-bar;
+}
+#destination-tabs {
+  view-transition-name: destination-tabs;
+}
+#pages-sub-heading {
+  view-transition-name: pages-sub-heading;
+}
+
+#destination-image{
+  view-transition-name: destination-image;
+}
+#destination-title-description{
+  view-transition-name: destination-title-description;
+}
+#destination-details{
+  view-transition-name: destination-details;
+} */
+
+/* ::view-transition-group(destination-image) {
+  animation: 5s ease-in both move-in;
+  z-index: 5800;
+}
+::view-transition-group(destination-title-description) {
+  animation: 5s ease-in both move-in;
+  z-index: 5800;
+}
+::view-transition-group(destination-details) {
+  animation: 5s ease-in both move-in;
+  z-index: 5800;
+} */
+
+/* #background-images {
+  view-transition-name: background-images;
+} */
+
+/* ::view-transition-new(#background-images) { */
+/* height: 100%; */
+/* background-color: rgba(0, 0, 0, 0); */
+/* } */
+
+#destination-image {
+  view-transition-name: destination-image;
+}
+
+#destination-title-description {
+  view-transition-name: destination-title-description;
+}
+
+#destination-details{
+  view-transition-name: destination-details;
+}
+
+::view-transition-old(destination-image) {
+  animation: fade-out-left 5s ease-in forwards;
+}
+::view-transition-new(destination-image) {
+  animation: fade-in-right 5s ease-out forwards;
+}
+::view-transition-old(destination-title-description) {
+  animation: fade-out-left 5s ease-in forwards;
+}
+::view-transition-new(destination-title-description) {
+  animation: fade-in-right 5s ease-out forwards;
+}
+::view-transition-old(destination-details) {
+  animation: fade-out-left 5s ease-in forwards;
+}
+::view-transition-new(destination-details) {
+  animation: fade-in-right 5s ease-out forwards;
+}
+
+@keyframes fade-out-left {
+  to {
+    translate: -100vw 0;
+  }
+}
+@keyframes fade-in-right {
+  from {
+    translate: 100vw 0;
+  }
+}

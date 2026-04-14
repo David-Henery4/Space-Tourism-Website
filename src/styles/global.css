@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./text-styles.css";
+@import "./transitions.css";
 
 @theme {
   /* Breakpoints */

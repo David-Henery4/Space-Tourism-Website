@@ -8,20 +8,27 @@ const { slug } = Astro.props;
 ---
 
 <menu
+  id="destination-tabs"
   class="flex justify-center items-center gap-6 sub-heading-2 laptop:col-start-2 laptop:col-end-7 laptop:justify-start"
 >
   {
-    destinations.map((destination) => {
-      // Temp
-      const isActive = destination.data.slug === slug;
-      return (
-        <li class="relative pb-2 mobile:pb-3">
-          <a href={`/destination/${destination.data.slug}`} class="uppercase hover:cursor-pointer">
-            {destination.data.name}
-          </a>
-          {isActive && <div class="absolute bottom-0 w-full h-0.75 bg-white" />}
-        </li>
-      );
-    })
+    destinations
+      .sort((a, b) => a.data.id - b.data.id)
+      .map((destination) => {
+        const isActive = destination.data.slug === slug;
+        return (
+          <li class="relative pb-2 mobile:pb-3">
+            <a
+              href={`/destination/${destination.data.slug}#destination-tabs`}
+              class="uppercase hover:cursor-pointer"
+            >
+              {destination.data.name}
+            </a>
+            {isActive && (
+              <div class="absolute bottom-0 w-full h-0.75 bg-white" />
+            )}
+          </li>
+        );
+      })
   }
 </menu>
