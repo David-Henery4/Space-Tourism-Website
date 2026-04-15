@@ -8,7 +8,9 @@ const astro = Astro.url.pathname;
 >
   {
     navigationData.map((navItem, i) => {
-      const isActive = navItem.href === astro;
+      const isActive =
+        navItem.href === astro ||
+        (navItem.href !== "/" && astro.startsWith(`${navItem.href}/`));
       return (
         <li class="relative h-full grid place-items-center">
           <a

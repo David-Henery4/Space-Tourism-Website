@@ -5,6 +5,7 @@
 @theme {
   /* Breakpoints */
   --breakpoint-*: initial;
+  --breakpoint-mobile-small: 23.43em; /* 375px */
   --breakpoint-mobile: 32.75em; /* 524px */
   --breakpoint-mobile-large: 42.5em; /* 680px */
   --breakpoint-tablet: 52.5em; /* 840px */

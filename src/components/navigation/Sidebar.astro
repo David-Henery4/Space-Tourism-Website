@@ -1,0 +1,48 @@
+---
+import CrossIcon from "@assets/svgs/icon-close.svg";
+import navigationData from "@data/navigation-data/navigationData";
+const astro = Astro.url.pathname;
+---
+
+<div
+  id="background-overlay"
+  class="hidden fixed translate-x-full bg-primary/25 top-0 left-0 w-full h-svh z-40 mobile-small:block"
+>
+</div>
+<aside
+  id="sidebar-element"
+  class="fixed translate-x-full transition-all p-9 top-0 left-0 w-full h-svh bg-white/4 backdrop-blur-xl z-50 mobile-small:left-[30%] mobile-small:w-[70%]"
+>
+  <div
+    id="cross-icon"
+    class="hover:cursor-pointer flex justify-end items-center"
+  >
+    <CrossIcon />
+  </div>
+
+  <menu
+    class="mt-16 font-barlow-condensed uppercase text-sm tracking-[2.36px] flex flex-col justify-start items-start gap-8"
+    >{
+      navigationData.map((navItem, i) => {
+        const isActive =
+          navItem.href === astro ||
+          (navItem.href !== "/" && astro.startsWith(`${navItem.href}/`));
+        return (
+          <li class="relative group h-full grid place-items-center">
+            <a
+              href={navItem.href}
+              class="inline-flex justify-start items-center gap-3 desktop-xl-large:gap-2.75"
+            >
+              <span class="font-bold">{`0${i}`}</span>
+              {navItem.name}
+            </a>
+            {isActive && (
+              <div class="absolute -bottom-1/2 h-0.75 w-full bg-white" />
+            )}
+            <div class="hidden absolute -bottom-1/2 h-0.75 w-full bg-white/50 group-hover:block" />
+          </li>
+        );
+      })
+    }
+  </menu>
+</aside>

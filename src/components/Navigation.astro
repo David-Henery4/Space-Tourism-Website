@@ -1,8 +1,15 @@
 ---
 import Logo from "../assets/svgs/logo.svg";
 import BurgerIcon from "../assets/svgs/icon-hamburger.svg";
-import NavigationLinksList from "./navigation/NavigationLinksList.astro";
+import {Sidebar, NavigationLinksList} from "@components/navigation";
+// import "../scripts/sidebar.ts"
+// <script src={} ></script>
+// <script>
+
+// </script>
 ---
+
+<script src="../scripts/sidebar.ts"></script>
 
 <nav
   id="navigation-bar"
@@ -20,9 +27,11 @@ import NavigationLinksList from "./navigation/NavigationLinksList.astro";
     >
     </div>
 
-    <div class="hover:cursor-pointer mobile-large:hidden">
+    <div id="burger-icon" class="hover:cursor-pointer mobile-large:hidden">
       <BurgerIcon />
     </div>
+
+    <Sidebar/>
 
     <NavigationLinksList />
   </div>
