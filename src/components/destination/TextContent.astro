@@ -26,10 +26,11 @@ const { description, distance, name, travelTime, slug } = Astro.props;
     id="destination-title-description"
     class="mt-5 mb-8 mobile:mt-8 mobile:mb-12 laptop:col-start-2 laptop:col-end-7 laptop:mt-9.25 laptop:mb-13.5"
   >
-    <h1 class="uppercase text-[56px] mobile:text-[80px] laptop:text-[100px]">
+    <h1 id="destination-title" class="uppercase text-[56px] mobile:text-[80px] laptop:text-[100px]">
       {name}
     </h1>
     <p
+      id="destination-description"
       class="base-text mx-auto max-w-81.75 mobile:max-w-143.25 laptop:max-w-111 laptop:mt-3.5 laptop:ml-0"
     >
       {description}

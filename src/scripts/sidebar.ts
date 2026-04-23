@@ -1,10 +1,11 @@
-let isSidebarOpen = false;
 
+// ELEMENTS
 const sidebarElement = document.getElementById("sidebar-element");
 const overlayElement = document.getElementById("background-overlay");
 const burgerIcon = document.getElementById("burger-icon");
 const crossIcon = document.getElementById("cross-icon");
 
+// FUNCTIONALITY
 const toggleSidebar = (status: "OPEN" | "CLOSED") => {
   if (!sidebarElement) return;
   if (!overlayElement) return;
@@ -17,8 +18,7 @@ const toggleSidebar = (status: "OPEN" | "CLOSED") => {
   overlayElement.style.transform = "translateX(100%)";
 }
 
+// EVENTS
 burgerIcon?.addEventListener("click", () => toggleSidebar("OPEN"))
-
 crossIcon?.addEventListener("click", () => toggleSidebar("CLOSED"))
-
 overlayElement?.addEventListener("click", () => toggleSidebar("CLOSED"))
