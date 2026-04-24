@@ -1,12 +1,9 @@
 import type { APIRoute } from "astro";
+import { getImage } from "astro:assets";
 import { getCollection } from "astro:content";
-
-const usernames = ["moon", "mars", "titan", "europa"];
 
 export const GET = (async ({ params, request }) => {
   const slug = params.slug;
-
-  console.log("Checking slug!: ", slug);
 
   if (!slug) {
     return new Response(JSON.stringify({ error: "No slug provided" }), {
@@ -23,8 +20,18 @@ export const GET = (async ({ params, request }) => {
     });
   }
 
+  const imageResult = await getImage({ src: destination.data.image });
+
   return new Response(
-    JSON.stringify(destination.data),
+    JSON.stringify({
+      ...destination.data,
+      image: {
+        src: imageResult.src,
+        format: imageResult.options.format,
+        width: imageResult.attributes.width,
+        height: imageResult.attributes.height,
+      },
+    }),
   );
 }) satisfies APIRoute;
 

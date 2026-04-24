@@ -23,13 +23,14 @@ const { slug } = Astro.props;
             <a
               href={`/destination/${destination.data.slug}`}
               class="uppercase hover:cursor-pointer"
-              data-slug={`${destination.data.slug}`}
             >
               {destination.data.name}
             </a>
-            {isActive && (
-              <div class="absolute bottom-0 w-full h-0.75 bg-white" />
-            )}
+
+            <div
+              data-slug={`${destination.data.slug}`}
+              class={`${isActive ? "block" : "hidden"} absolute bottom-0 w-full h-0.75 bg-white`}
+            />
           </li>
         );
       })
