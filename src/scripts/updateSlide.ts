@@ -20,7 +20,7 @@ type DestinationData = {
   travelTime: string;
 };
 
-function handleDestinationContentTransistions(data: DestinationData) {
+function handleDestinationContentTransitions(data: DestinationData) {
   const getElement = (id: string) => document.getElementById(id);
 
   const elements = {
@@ -79,7 +79,7 @@ navigation.addEventListener("navigate", (e) => {
       const data = await response.json();
       //
       document.startViewTransition(async () => {
-        handleDestinationContentTransistions(data)
+        handleDestinationContentTransitions(data)
       });
     },
   });
