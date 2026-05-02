@@ -9,6 +9,12 @@
 function isDestination(url: string) {
   return url.includes("/destination/");
 }
+function isCrew(url: string) {
+  return url.includes("/crew/");
+}
+function isTechnology(url: string) {
+  return url.includes("/technology/");
+}
 
 type DestinationData = {
   description: string;
@@ -64,22 +70,53 @@ function handleDestinationContentTransitions(data: DestinationData) {
         tabUnderlineElement.classList.add("hidden");
         tabUnderlineElement.classList.remove("block");
       }
-  });
+    });
 }
 
+type CrewData = {
+  id: number;
+  name: string;
+  description: string;
+  jobTitle: string;
+  slug: string;
+  profileImage: { src: string; format: string; width: number; height: number };
+};
+
+function handleCrewContentTransitions() {}
+
+type TechnologyData = {
+  id: number;
+  name: string;
+  description: string;
+  slug: string;
+  image: {
+    portrait: { src: string; format: string; width: number; height: number };
+    landscape: { src: string; format: string; width: number; height: number };
+  };
+};
+
+function handleTechnologyContentTransitions() {}
+
 navigation.addEventListener("navigate", (e) => {
-  if (!e.canIntercept) return;
+  if (!e.canIntercept) return; 
   if (!isDestination(e.destination.url)) return;
-  //
-  const urlSlug = new URL(e.destination.url).pathname.split("/").pop();
+  
+  const urlPathArray = new URL(e.destination.url).pathname
+  .trim()
+  .split("/")
+  .filter(Boolean);
+  
+  const page = urlPathArray[0];
+  const slug = urlPathArray[1];
+  
   //
   e.intercept({
     async handler() {
-      const response = await fetch(`/api/${urlSlug}`);
+      const response = await fetch(`/api/${slug}`);
       const data = await response.json();
       //
       document.startViewTransition(async () => {
-        handleDestinationContentTransitions(data)
+        handleDestinationContentTransitions(data);
       });
     },
   });
