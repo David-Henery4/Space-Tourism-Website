@@ -22,15 +22,27 @@
   view-transition-name: destination-details;
 }
 
+#crew-info{
+  view-transition-name: crew-info;
+}
+
+#crew-image{
+  view-transition-name: crew-image;
+}
+
 ::view-transition-old(destination-image),
 ::view-transition-old(destination-title-description),
-::view-transition-old(destination-details) {
+::view-transition-old(destination-details), 
+::view-transition-old(crew-info), 
+::view-transition-old(crew-image) {
   animation: fade-out-left 1s ease-out forwards;
 }
 
 ::view-transition-new(destination-image),
 ::view-transition-new(destination-title-description),
-::view-transition-new(destination-details) {
+::view-transition-new(destination-details),
+::view-transition-new(crew-info), 
+::view-transition-new(crew-image) {
   animation: fade-in-right 1s ease-in forwards;
 }
 

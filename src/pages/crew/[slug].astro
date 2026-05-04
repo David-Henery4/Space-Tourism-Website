@@ -12,7 +12,9 @@ export const getStaticPaths = (async () => {
     };
   });
 }) satisfies GetStaticPaths;
-const { crewData: {data} } = Astro.props;
+const {
+  crewData: { data },
+} = Astro.props;
 
 //
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -35,8 +37,12 @@ import { CrewImage, CarouselDots, CrewMemberInfo } from "../../components/crew";
     <div class="mobile:text-left mobile:mb-5">
       <PageSubHeading pageNumber="02" title="meet your crew" />
     </div>
-    <CrewImage image={data.profileImage}  />
+    <CrewImage image={data.profileImage} />
     <CarouselDots />
-    <CrewMemberInfo name={data.name} jobTitle={data.jobTitle} description={data.description} />
+    <CrewMemberInfo
+      name={data.name}
+      jobTitle={data.jobTitle}
+      description={data.description}
+    />
   </main>
 </BaseLayout>

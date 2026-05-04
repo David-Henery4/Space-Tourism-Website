@@ -82,7 +82,47 @@ type CrewData = {
   profileImage: { src: string; format: string; width: number; height: number };
 };
 
-function handleCrewContentTransitions() {}
+function handleCrewContentTransitions(data: CrewData) {
+  const getElement = (id: string) => document.getElementById(id);
+
+  const elements = {
+    jobTitle: getElement("crew-job-title"),
+    description: getElement("crew-description"),
+    name: getElement("crew-name"),
+    image: getElement("crew-image"),
+    tabContainer: getElement("crew-tabs"),
+  };
+
+  if (!Object.values(elements).every(Boolean)) return;
+
+  elements.name!.textContent = data.name;
+  elements.jobTitle!.textContent = data.jobTitle;
+  elements.description!.textContent = data.description;
+
+  const imageElement = elements.image as HTMLImageElement;
+  Object.assign(imageElement, {
+    src: data.profileImage.src,
+    width: data.profileImage.width,
+    height: data.profileImage.height,
+  });
+  imageElement.setAttribute("format", data.profileImage.format);
+
+  // WAS HERE, GOING TO HAVE TO IMPLIMENT THE DYNAMIC STYLING TOMORROW.
+  elements.tabContainer
+    ?.querySelectorAll("li")
+    ?.forEach((tabUnderlineElement) => {
+      const tabSlug = tabUnderlineElement.dataset.slug;
+      if (!tabSlug) return;
+      if (tabSlug === data.slug) {
+        // Because of Tailwind behaviour, Might have to change.
+        tabUnderlineElement.classList.add("bg-white");
+        tabUnderlineElement.classList.remove("bg-white/15");
+      } else {
+        tabUnderlineElement.classList.add("bg-white/15");
+        tabUnderlineElement.classList.remove("bg-white");
+      }
+    });
+}
 
 type TechnologyData = {
   id: number;
@@ -95,28 +135,40 @@ type TechnologyData = {
   };
 };
 
-function handleTechnologyContentTransitions() {}
+function handleTechnologyContentTransitions(data: TechnologyData) {}
 
 navigation.addEventListener("navigate", (e) => {
-  if (!e.canIntercept) return; 
-  if (!isDestination(e.destination.url)) return;
-  
+  if (!e.canIntercept) return;
+  if (
+    !isDestination(e.destination.url) &&
+    !isCrew(e.destination.url) &&
+    !isTechnology(e.destination.url)
+  )
+    return;
+
   const urlPathArray = new URL(e.destination.url).pathname
-  .trim()
-  .split("/")
-  .filter(Boolean);
-  
+    .trim()
+    .split("/")
+    .filter(Boolean);
+
   const page = urlPathArray[0];
   const slug = urlPathArray[1];
-  
   //
   e.intercept({
     async handler() {
-      const response = await fetch(`/api/${slug}`);
+      const response = await fetch(`/api/${page}/${slug}`);
       const data = await response.json();
       //
       document.startViewTransition(async () => {
-        handleDestinationContentTransitions(data);
+        if (page === "destination") {
+          handleDestinationContentTransitions(data);
+        }
+        if (page === "crew") {
+          handleCrewContentTransitions(data);
+        }
+        if (page === "technology") {
+          handleTechnologyContentTransitions(data);
+        }
       });
     },
   });

@@ -1,29 +1,36 @@
 ---
 import { getCollection } from "astro:content";
-const crew = await getCollection("crewCollection")
+const crew = await getCollection("crewCollection");
 const linksArray = crew
   .map((crewData) => {
     return {
       id: crewData.data.id,
       href: `/crew/${crewData.data.slug}`,
+      slug: crewData.data.slug,
     };
   })
   .sort((a, b) => b.id - a.id);
 const currentUrl = Astro.url.pathname;
 ---
 
-<div
+<script src="../../scripts/updateSlide.ts"></script>
+
+<menu
+  id="crew-tabs"
   class="flex justify-center items-center gap-4 mobile:row-start-3 mobile:row-end-4 laptop:self-start laptop:justify-self-start laptop:pb-24"
 >
   {
     linksArray.map((item) => {
       const isActive = item.href === currentUrl;
       return (
-        <a
-          href={item.href}
-          class={`w-2.5 h-2.5 rounded-full ${isActive ? "bg-white" : "bg-white/15"} hover:cursor-pointer laptop:w-3.75 laptop:h-3.75`}
-        />
+        <li>
+          <a
+            data-slug={`${item.slug}`}
+            href={item.href}
+            class={`inline-block w-2.5 h-2.5 rounded-full ${isActive ? "bg-white" : "bg-white/15"} hover:cursor-pointer laptop:w-3.75 laptop:h-3.75`}
+          />
+        </li>
       );
     })
   }
-</div>
+</menu>

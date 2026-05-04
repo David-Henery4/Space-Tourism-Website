@@ -7,18 +7,23 @@ interface Props {
 const { description, jobTitle, name } = Astro.props;
 ---
 
-<div class="laptop:text-left">
+<div id="crew-info" class="laptop:text-left">
   <h3
+    id="crew-job-title"
     class="text-base uppercase text-white/50 mobile:text-2xl laptop:text-[32px]"
   >
     {jobTitle}
   </h3>
   <h1
+    id="crew-name"
     class="text-2xl uppercase text-white mt-2 mobile:text-[40px] laptop:text-[56px]"
   >
     {name}
   </h1>
-  <p class="base-text mt-4 max-w-114.5 mx-auto laptop:ml-0 laptop:mt-7">
+  <p
+    id="crew-description"
+    class="base-text mt-4 max-w-114.5 mx-auto laptop:ml-0 laptop:mt-7"
+  >
     {description}
   </p>
 </div>

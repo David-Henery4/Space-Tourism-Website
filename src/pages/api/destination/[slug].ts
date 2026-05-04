@@ -12,6 +12,8 @@ export const GET = (async ({ params, request }) => {
   }
 
   const destinations = await getCollection("destinationCollection");
+  // const crewInfo = await getCollection("crewCollection");
+
   const destination = destinations.find((d) => d.data.slug === slug);
 
   if (!destination) {
