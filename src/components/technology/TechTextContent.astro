@@ -9,11 +9,12 @@ const { description, title } = Astro.props;
 <div>
   <h3 class="sub-heading-2">THE TERMINOLOGY…</h3>
   <h1
+    id="technology-title"
     class="text-2xl mt-2 uppercase mobile:text-[40px] mobile:mt-4 laptop:text-[48px] desktop-xl-large:text-[56px]"
   >
     {title}
   </h1>
-  <p class="base-text mt-4 max-w-114.5 mx-auto laptop:ml-0">
+  <p id="technology-description" class="base-text mt-4 max-w-114.5 mx-auto laptop:ml-0">
     {description}
   </p>
 </div>

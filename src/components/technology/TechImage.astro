@@ -8,16 +8,17 @@ interface Props {
   };
 }
 const { image } = Astro.props;
-
 ---
 
 <div class="w-full col-start-1 col-end-13 laptop:col-start-9 laptop:col-end-13">
   <Image
+    id="technology-landscape-image"
     class="w-full max-h-77.5 object-center object-fill laptop:hidden"
     src={image.landscape}
     alt=""
   />
   <Image
+    id="technology-portrait-image"
     class="hidden laptop:block w-full object-center object-fill h-104.5 desktop:h-131.75"
     src={image.portrait}
     alt=""

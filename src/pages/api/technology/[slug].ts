@@ -4,26 +4,26 @@ import { getCollection } from "astro:content";
 
 export const GET = (async ({ params, request }) => {
   const slug = params.slug;
-
+  
   if (!slug) {
     return new Response(JSON.stringify({ error: "No slug provided" }), {
       status: 400,
     });
   }
-
+  
   const techInfo = await getCollection("technologyCollection");
-
+  
   const technology = techInfo.find((d) => d.data.slug === slug);
-
+  
   if (!technology) {
     return new Response(JSON.stringify({ error: "technology not found" }), {
       status: 404,
     });
   }
-
+  
   const imageResultLandscape = await getImage({ src: technology.data.image.landscape });
   const imageResultPortrait = await getImage({ src: technology.data.image.portrait });
-
+  
   return new Response(
     JSON.stringify({
       ...technology.data,
@@ -46,10 +46,11 @@ export const GET = (async ({ params, request }) => {
 
 }) satisfies APIRoute;
 
-export function getStaticPaths() {
-  return [
-    { params: { slug: "space-capsule" } },
-    { params: { slug: "spaceport" } },
-    { params: { slug: "launch-vehicle" } },
-  ];
+export async function getStaticPaths() {
+  const techInfo = await getCollection("technologyCollection");
+  return techInfo.map((tech) => {
+    return {
+      params: { slug: tech.data.slug },
+    };
+  });
 }
