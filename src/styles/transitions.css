@@ -6,8 +6,8 @@
   animation: none;
 } */
 
-#navigation-bar{
-  view-transition-name: none
+#navigation-bar {
+  view-transition-name: none;
 }
 
 #destination-image {
@@ -18,32 +18,46 @@
   view-transition-name: destination-title-description;
 }
 
-#destination-details{
+#destination-details {
   view-transition-name: destination-details;
 }
 
-#crew-info{
+#crew-info {
   view-transition-name: crew-info;
 }
 
-#crew-image{
+#crew-image {
   view-transition-name: crew-image;
 }
 
 ::view-transition-old(destination-image),
 ::view-transition-old(destination-title-description),
-::view-transition-old(destination-details), 
-::view-transition-old(crew-info), 
-::view-transition-old(crew-image) {
-  animation: fade-out-left 1s ease-out forwards;
+::view-transition-old(destination-details),
+::view-transition-old(crew-info) {
+  animation: fade-out-left 1s forwards;
 }
 
 ::view-transition-new(destination-image),
 ::view-transition-new(destination-title-description),
 ::view-transition-new(destination-details),
-::view-transition-new(crew-info), 
+::view-transition-new(crew-info),
 ::view-transition-new(crew-image) {
-  animation: fade-in-right 1s ease-in forwards;
+  animation: fade-in-right 1s forwards;
+}
+
+::view-transition-old(crew-image) {
+  animation: fade-out-left 1s forwards;
+}
+
+/* Mobile: 524px */
+@media (min-width: 32.75em) {
+  ::view-transition-old(crew-image) {
+    /* translate: 0; */
+    transform: translateY(100%);
+    opacity: 0;
+    animation: 0.4s ease-in both;
+    transition: 800ms ease-out;
+  }
 }
 
 @keyframes fade-out-left {
