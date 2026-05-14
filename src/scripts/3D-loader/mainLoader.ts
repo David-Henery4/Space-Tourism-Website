@@ -4,7 +4,6 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 const destinationImageContainer = document.getElementById(
   "destination-image-container",
 ) as HTMLDivElement;
-// import { TrackballControls } from "three/addons/controls/TrackballControls.js";
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -20,25 +19,100 @@ let controls;
 
 const loader = new GLTFLoader();
 
-let model: THREE.Group | null = null;
+let model: THREE.Object3D | null = null;
 
-loader.load(
-  "/assets/3D-Models/mars/24881_Mars_1_6792.gltf",
-  function (gltf) {
-    model = gltf.scene;
+const currentPageSlug = destinationImageContainer.dataset.slug;
+// const modelPath = currentPageSlug
+//   ? `/assets/3D-Models/${currentPageSlug}/${currentPageSlug}.glb`
+//   : "/assets/3D-Models/moon/moon.glb";
 
-    // Tilt the model 90 degrees on the X axis once on load
-    // model.rotation.x = Math.PI / 5;
+/**
+ * Extracts the root scene object from a loaded GLTF object.
+ * GLTF files can have their scene data stored in different properties depending on the export tool used.
+ * This function prioritizes gltf.scene if it contains children, otherwise falls back to the first scene in gltf.scenes array.
+ * This ensures compatibility with various GLTF exporters and prevents models from failing to load due to structural differences.
+ * @param gltf The loaded GLTF object from the GLTFLoader.
+ * @returns The root THREE.Object3D scene or null if no valid scene is found.
+ */
+function getModelFromGltf(gltf: any): THREE.Object3D | null {
+  if (gltf.scene && gltf.scene.children.length > 0) {
+    return gltf.scene;
+  }
+  if (Array.isArray(gltf.scenes) && gltf.scenes.length > 0) {
+    return gltf.scenes[0];
+  }
+  return gltf.scene || null;
+}
 
-    model.rotation.z = THREE.MathUtils.degToRad(23.5);
+/**
+ * Normalizes the scale, position, and materials of a 3D model to ensure consistent rendering.
+ * This function scales the model so its largest dimension fits within a target size (980 units),
+ * centers it at the origin for proper rotation, and sets all mesh materials to double-sided rendering.
+ * This prevents issues where models of varying sizes or orientations appear incorrectly or invisibly,
+ * ensuring all loaded GLTF models display uniformly in the scene regardless of their original export settings.
+ * @param modelObject The THREE.Object3D model to normalize.
+ */
+function normalizeModel(modelObject: THREE.Object3D) {
+  const box = new THREE.Box3().setFromObject(modelObject);
+  const size = box.getSize(new THREE.Vector3());
+  const maxDim = Math.max(size.x, size.y, size.z);
 
-    scene.add(model);
-  },
-  undefined,
-  function (error) {
-    console.error(error);
-  },
-);
+  if (maxDim > 0) {
+    const scale = 980 / maxDim;
+    modelObject.scale.setScalar(scale);
+  }
+
+  const center = box.getCenter(new THREE.Vector3());
+  modelObject.position.sub(center);
+
+  modelObject.traverse((child) => {
+    if ((child as THREE.Mesh).isMesh) {
+      const material = (child as THREE.Mesh).material;
+      if (Array.isArray(material)) {
+        material.forEach((mat) => {
+          if (mat && "side" in mat) {
+            mat.side = THREE.DoubleSide;
+          }
+        });
+      } else if (material && "side" in material) {
+        material.side = THREE.DoubleSide;
+      }
+    }
+  });
+}
+
+export function loadDestinationModel(slug: string) {
+  const modelPath = slug
+    ? `/assets/3D-Models/${slug}/${slug}.glb`
+    : "/assets/3D-Models/moon/moon.glb";
+  loader.load(
+    modelPath,
+    function (gltf) {
+      const loadedModel = getModelFromGltf(gltf);
+      if (!loadedModel) {
+        console.error("GLTF loaded but no scene found:", gltf);
+        return;
+      }
+      model?.clear();
+      model = loadedModel;
+      normalizeModel(model);
+
+      // Tilt the model 90 degrees on the X axis once on load
+      // model.rotation.x = Math.PI / 5;
+
+      model.rotation.z = THREE.MathUtils.degToRad(23.5);
+      scene.add(model);
+    },
+    undefined,
+    function (error) {
+      console.error(error);
+    },
+  );
+}
+
+if (currentPageSlug) {
+  loadDestinationModel(currentPageSlug);
+}
 
 const renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -47,7 +121,7 @@ destinationImageContainer.appendChild(renderer.domElement);
 
 camera.position.z = 1100;
 
-//Add lights to the scene, so we can actually see the 3D model
+// Add lights to the scene, so we can actually see the 3D model
 const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
 topLight.position.set(500, 500, 500); //top-left-ish
 topLight.castShadow = true;
@@ -57,8 +131,17 @@ const ambientLight = new THREE.AmbientLight(0x333333, 1);
 scene.add(ambientLight);
 
 // controls = new OrbitControls(camera, renderer.domElement);
-// controls = new TrackballControls(camera, renderer.domElement);
 
+/**
+ * Resizes the WebGL renderer to match the display size while respecting a maximum pixel count limit.
+ * This function calculates the optimal canvas size based on device pixel ratio and container dimensions,
+ * then scales it down if the total pixel count exceeds the specified maximum to prevent performance issues.
+ * This ensures smooth rendering on high-DPI displays and large screens without overwhelming the GPU,
+ * maintaining a balance between visual quality and performance.
+ * @param rendererItem The THREE.WebGLRenderer instance to resize.
+ * @param maxPixelCount The maximum allowed pixel count (default 3840 * 2160 for 4K).
+ * @returns True if the renderer was resized, false otherwise.
+ */
 function resizeRendererToDisplaySize(
   rendererItem: THREE.WebGLRenderer,
   maxPixelCount = 3840 * 2160,
@@ -80,7 +163,7 @@ function resizeRendererToDisplaySize(
   return needResize;
 }
 
-function animate() {
+export function animate() {
   requestAnimationFrame(animate);
 
   if (resizeRendererToDisplaySize(renderer)) {
@@ -98,41 +181,3 @@ function animate() {
 }
 
 animate();
-
-// Previous attempt
-
-// renderer.setSize(window.innerWidth, window.innerHeight);
-// // renderer.setAnimationLoop(animate);
-// destinationImageContainer.appendChild(renderer.domElement);
-
-// // const geometry = new THREE.BoxGeometry(1, 1, 1);
-// // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-// // const cube = new THREE.Mesh(geometry, material);
-// // scene.add(cube);
-
-// camera.position.z = 5;
-// // camera.position.set(-1.8, 0.6, 2.7);
-
-// // function animate(time= 1000) {
-// //   cube.rotation.x = time / 2000;
-// //   cube.rotation.y = time / 1000;
-// // renderer.render(scene, camera);
-// // }
-
-// // const controls = new OrbitControls(camera, renderer.domElement);
-// const loader = new GLTFLoader();
-
-// loader.load(
-//   "/assets/3D-Models/mars/24881_Mars_1_6792.gltf",
-//   function (gltf) {
-//     console.log("Called");
-//     scene.add(gltf.scene);
-//     // renderer.render(scene, camera);
-//   },
-//   undefined,
-//   function (error) {
-//     console.error(error);
-//   },
-// );
-
-// renderer.render(scene, camera);

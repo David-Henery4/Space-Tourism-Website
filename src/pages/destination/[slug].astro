@@ -33,7 +33,7 @@ import { TextContent, ImageContent } from "../../components/destination";
   <main
     class="py-6 grid gap-6.5 col-start-2 col-end-12 text-center mobile:gap-13.25 mobile:py-10 laptop:grid-cols-basic-2-cols laptop:py-19"
   >
-    <ImageContent image={data.image} />
+    <ImageContent image={data.image} slug={data.slug} />
     <TextContent {...data} />
   </main>
 </BaseLayout>
