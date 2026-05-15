@@ -1,3 +1,5 @@
+
+
 /* @view-transition {
   navigation: auto;
 } */
@@ -58,6 +60,10 @@
 
 ::view-transition-old(crew-image) {
   animation: fade-out-left 1.5s forwards;
+}  
+
+::view-transition-new(crew-image) {
+  animation: fade-in-right 1.5s forwards;
 }
 
 /* Mobile: 524px */
@@ -66,7 +72,7 @@
     /* translate: 0; */
     transform: translateY(100%);
     opacity: 0;
-    animation: 0.4s ease-in both;
+    animation: 0.2s ease-in both;
     transition: 800ms ease-out;
   }
 }

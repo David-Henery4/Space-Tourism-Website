@@ -1,30 +1,31 @@
 import * as THREE from "three";
-// import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 const destinationImageContainer = document.getElementById(
   "destination-image-container",
-) as HTMLDivElement;
-
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(
-  75,
-  destinationImageContainer.clientWidth /
-    destinationImageContainer.clientHeight,
-  0.1,
-  1000,
 );
 
-let object;
-let controls;
-
+let camera: THREE.PerspectiveCamera;
+let currentPageSlug: string | undefined;
+let model: THREE.Object3D | null = null;
+const renderer = new THREE.WebGLRenderer({ alpha: true });
+const scene = new THREE.Scene();
 const loader = new GLTFLoader();
 
-let model: THREE.Object3D | null = null;
+renderer.setSize(window.innerWidth, window.innerHeight);
 
-const currentPageSlug = destinationImageContainer.dataset.slug;
-// const modelPath = currentPageSlug
-//   ? `/assets/3D-Models/${currentPageSlug}/${currentPageSlug}.glb`
-//   : "/assets/3D-Models/moon/moon.glb";
+if (destinationImageContainer){
+  camera = new THREE.PerspectiveCamera(
+    75,
+    destinationImageContainer.clientWidth /
+      destinationImageContainer.clientHeight,
+    0.1,
+    1000,
+  );
+  currentPageSlug = destinationImageContainer.dataset.slug;
+  camera.position.z = 1100;
+  destinationImageContainer.appendChild(renderer.domElement);
+  animate();
+}
 
 /**
  * Extracts the root scene object from a loaded GLTF object.
@@ -110,28 +111,6 @@ export function loadDestinationModel(slug: string) {
   );
 }
 
-if (currentPageSlug) {
-  loadDestinationModel(currentPageSlug);
-}
-
-const renderer = new THREE.WebGLRenderer({ alpha: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-destinationImageContainer.appendChild(renderer.domElement);
-
-camera.position.z = 1100;
-
-// Add lights to the scene, so we can actually see the 3D model
-const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
-topLight.position.set(500, 500, 500); //top-left-ish
-topLight.castShadow = true;
-scene.add(topLight);
-
-const ambientLight = new THREE.AmbientLight(0x333333, 1);
-scene.add(ambientLight);
-
-// controls = new OrbitControls(camera, renderer.domElement);
-
 /**
  * Resizes the WebGL renderer to match the display size while respecting a maximum pixel count limit.
  * This function calculates the optimal canvas size based on device pixel ratio and container dimensions,
@@ -180,4 +159,16 @@ export function animate() {
   renderer.render(scene, camera);
 }
 
-animate();
+if (currentPageSlug) {
+  loadDestinationModel(currentPageSlug);
+}
+
+// Add lights to the scene, so we can actually see the 3D model
+const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
+topLight.position.set(500, 500, 500); //top-left-ish
+topLight.castShadow = true;
+scene.add(topLight);
+
+const ambientLight = new THREE.AmbientLight(0x333333, 1);
+scene.add(ambientLight);
+

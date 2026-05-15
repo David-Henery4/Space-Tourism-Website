@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+// import { Image } from "astro:assets";
 import { PageSubHeading } from "../"; // Might have to change path
 import type { ImageMetadata } from "astro";
 
@@ -7,7 +7,7 @@ interface Props {
   image: ImageMetadata;
   slug: string;
 }
-const { image, slug } = Astro.props;
+const { slug } = Astro.props;
 ---
 
 <div
