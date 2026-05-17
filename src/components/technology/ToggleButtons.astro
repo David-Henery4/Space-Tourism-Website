@@ -23,7 +23,7 @@ const { slug } = Astro.props;
             <a
               data-slug={`${techItem.data.slug}`}
               href={`/technology/${techItem.data.slug}`}
-              class={`w-10 h-10 inline-grid place-items-center rounded-full border hover:cursor-pointer mobile:w-15 mobile:h-15 laptop:h-17.5 laptop:w-17.5 desktop-xl-large:w-20 desktop-xl-large:h-20 ${isActive ? "bg-white text-primary" : "text-white"}`}
+              class={`w-10 h-10 inline-grid place-items-center rounded-full border border-white/25 hover:border-white hover:cursor-pointer mobile:w-15 mobile:h-15 laptop:h-17.5 laptop:w-17.5 desktop-xl-large:w-20 desktop-xl-large:h-20 ${isActive ? "bg-white text-primary" : "text-white"}`}
             >
               {index + 1}
             </a>

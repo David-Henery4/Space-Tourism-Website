@@ -27,7 +27,7 @@ const currentUrl = Astro.url.pathname;
           <a
             data-slug={`${item.slug}`}
             href={item.href}
-            class={`inline-block w-2.5 h-2.5 rounded-full ${isActive ? "bg-white" : "bg-white/15"} hover:cursor-pointer laptop:w-3.75 laptop:h-3.75`}
+            class={`inline-block w-2.5 h-2.5 rounded-full ${isActive ? "bg-white" : "bg-white/15"} hover:cursor-pointer hover:bg-white/50 laptop:w-3.75 laptop:h-3.75`}
           />
         </li>
       );
