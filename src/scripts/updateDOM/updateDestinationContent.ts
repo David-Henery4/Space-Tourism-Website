@@ -8,7 +8,7 @@ type DestinationData = {
   travelTime: string;
 };
 import { loadDestinationModel } from "../3D-loader/mainLoader";
-import assignImageAttributes from "../helpers/assignImageAttr";
+// import assignImageAttributes from "../helpers/assignImageAttr";
 
 function updateDestinationContent(data: DestinationData) {
   const getElement = (id: string) => document.getElementById(id);
@@ -21,7 +21,7 @@ function updateDestinationContent(data: DestinationData) {
 
     // WAS USED WHEN HAD NORMAL IMAGES (NON-3D)
     // image: getElement("destination-image"),
-    
+
     modelContainer: getElement("destination-image-container"),
     tabContainer: getElement("destination-tabs"),
   };
@@ -37,7 +37,7 @@ function updateDestinationContent(data: DestinationData) {
 
   // Update Model Container Slug
   elements.modelContainer!.dataset.slug = data.slug;
-  loadDestinationModel(data.slug)
+  loadDestinationModel(data.slug);
 
   // Update image attributes
 
@@ -48,7 +48,7 @@ function updateDestinationContent(data: DestinationData) {
   //   imageAttributes: { ...data.image },
   // });
 
-  // Update Tabs styles
+  // Update Tabs Underline Styles
   elements.tabContainer
     ?.querySelectorAll("div")
     ?.forEach((activeTabStyleElement) => {
@@ -57,11 +57,26 @@ function updateDestinationContent(data: DestinationData) {
       if (tabSlug === data.slug) {
         activeTabStyleElement.classList.add("block");
         activeTabStyleElement.classList.remove("hidden");
+        // activeTabStyleElement.style.color = "#ffffff"
       } else {
+        // activeTabStyleElement.style.color = "#d0d6f9";
         activeTabStyleElement.classList.add("hidden");
         activeTabStyleElement.classList.remove("block");
       }
     });
+
+  // Update Tabs Text Colour
+  elements.tabContainer
+    ?.querySelectorAll("a")
+    ?.forEach((activeTabStyleElement) => {
+      const tabSlug = activeTabStyleElement.dataset.slug;
+      if (!tabSlug) return;
+      if (tabSlug === data.slug) {
+        activeTabStyleElement.style.color = "#ffffff"
+      } else {
+        activeTabStyleElement.style.color = "#d0d6f9";
+      }
+    });
 }
 
-export default updateDestinationContent
+export default updateDestinationContent;

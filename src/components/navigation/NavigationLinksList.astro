@@ -12,7 +12,7 @@ const astro = Astro.url.pathname;
         navItem.href === astro ||
         (navItem.href !== "/" && astro.startsWith(`${navItem.href}/`));
       return (
-        <li class="relative h-full grid place-items-center">
+        <li class="group relative h-full grid place-items-center">
           <a
             href={navItem.href}
             class="inline-flex justify-start items-center gap-2 desktop-xl-large:gap-2.75"
@@ -21,6 +21,7 @@ const astro = Astro.url.pathname;
             {navItem.name}
           </a>
           {isActive && <div class="absolute bottom-0 h-0.75 w-full bg-white" />}
+          <div class="hidden absolute bottom-0 h-0.75 w-full bg-white/50 group-hover:block" />
         </li>
       );
     })

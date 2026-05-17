@@ -19,10 +19,11 @@ const { slug } = Astro.props;
       .map((destination) => {
         const isActive = destination.data.slug === slug;
         return (
-          <li class="relative pb-2 mobile:pb-3">
+          <li class="group relative pb-2 mobile:pb-3">
             <a
               href={`/destination/${destination.data.slug}`}
-              class="uppercase hover:cursor-pointer"
+              data-slug={`${destination.data.slug}`}
+              class={` ${isActive ? "text-white" : "text-secondary"} uppercase hover:cursor-pointer`}
             >
               {destination.data.name}
             </a>
@@ -31,6 +32,7 @@ const { slug } = Astro.props;
               data-slug={`${destination.data.slug}`}
               class={`${isActive ? "block" : "hidden"} absolute bottom-0 w-full h-0.75 bg-white`}
             />
+            <div class="hidden absolute bottom-0 h-0.75 w-full bg-white/50 group-hover:block" />
           </li>
         );
       })
