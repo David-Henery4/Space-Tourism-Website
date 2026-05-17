@@ -2,6 +2,7 @@
 @import "./text-styles.css";
 @import "./transitions.css";
 @import "./models.css";
+@import "./active-effects.css";
 
 @theme {
   /* Breakpoints */
