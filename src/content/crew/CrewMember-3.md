@@ -5,4 +5,5 @@ description: "Anousheh Ansari is an Iranian American engineer and co-founder of 
 jobTitle: "Flight Engineer"
 slug: "anousheh-ansari"
 profileImage: "../../assets/content-images/crew/image-anousheh-ansari.webp"
+altText: "Staff member holding a microphone while speaking at an event."
 ---

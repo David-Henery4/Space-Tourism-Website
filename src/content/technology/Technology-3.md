@@ -7,4 +7,5 @@ image: {
   portrait: "../../assets/content-images/technology/image-launch-vehicle-portrait.jpg",
   landscape: "../../assets/content-images/technology/image-launch-vehicle-portrait.jpg"
 }
+altText: "Rocket standing on a launch pad with support structures and a person in the foreground."
 ---

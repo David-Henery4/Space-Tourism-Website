@@ -7,4 +7,5 @@ image: {
   portrait: "../../assets/content-images/technology/image-spaceport-portrait.jpg",
   landscape: "../../assets/content-images/technology/image-spaceport-landscape.jpg"
 }
+altText: "Launch vehicle lifting off with bright engine flames and smoke at launch."
 ---

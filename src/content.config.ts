@@ -12,6 +12,7 @@ const crewCollection = defineCollection({
       jobTitle: z.string(),
       slug: z.string(),
       profileImage: image(),
+      altText: z.string()
     }),
 });
 
@@ -26,6 +27,7 @@ const destinationCollection = defineCollection({
       distance: z.string(),
       travelTime: z.string(),
       image: image(),
+      altText: z.string(),
     }),
 });
 
@@ -41,6 +43,7 @@ const technologyCollection = defineCollection({
         portrait: image(),
         landscape: image(),
       }),
+      altText: z.string(),
     }),
 });
 

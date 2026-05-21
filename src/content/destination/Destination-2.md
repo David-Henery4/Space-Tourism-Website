@@ -6,4 +6,5 @@ slug: "moon"
 distance: "384,400 km"
 travelTime: "3 days"
 image: "../../assets/content-images/image-moon.webp"
+altText: "The Moon partially in shadow, revealing craters and detailed surface textures."
 ---

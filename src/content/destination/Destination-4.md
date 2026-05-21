@@ -6,4 +6,5 @@ slug: "europa"
 distance: "628 mil. km"
 travelTime: "3 years"
 image: "../../assets/content-images/image-europa.webp"
+altText: "Europa with a partially shadowed icy surface marked by reddish cracks and streaks."
 ---

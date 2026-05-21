@@ -5,4 +5,5 @@ description: "Pilot on the first operational flight of the SpaceX Crew Dragon to
 jobTitle: "Pilot"
 slug: "victor-glover"
 profileImage: "../../assets/content-images/crew/image-victor-glover.webp"
+altText: "Portrait of Victor Glover smiling wearing a blue flight suit."
 ---

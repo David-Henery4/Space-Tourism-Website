@@ -6,4 +6,5 @@ slug: "titan"
 distance: "1.6 bil. km"
 travelTime: "7 years"
 image: "../../assets/content-images/image-titan.webp"
+altText: "Titan partially illuminated with a smooth hazy orange atmosphere against space."
 ---

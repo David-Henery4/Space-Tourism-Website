@@ -7,4 +7,5 @@ image: {
   portrait: "../../assets/content-images/technology/image-space-capsule-portrait.jpg",
   landscape: "../../assets/content-images/technology/image-space-capsule-landscape.jpg"
 }
+altText: "Space capsule orbiting above Earth with its docking hatch open."
 ---

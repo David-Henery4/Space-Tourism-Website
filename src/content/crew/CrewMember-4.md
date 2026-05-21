@@ -5,4 +5,5 @@ description: "Douglas Gerald Hurley is an American engineer, former Marine Corps
 jobTitle: "Commander"
 slug: "douglas-hurley"
 profileImage: "../../assets/content-images/crew/image-douglas-hurley.webp"
+altText: "Portrait of Douglas Hurley in a blue flight suit raising both arms."
 ---

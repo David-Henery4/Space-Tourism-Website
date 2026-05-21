@@ -5,4 +5,5 @@ description: "Mark Richard Shuttleworth is the founder and CEO of Canonical, the
 jobTitle: "Mission Specialist"
 slug: "mark-shuttleworth"
 profileImage: "../../assets/content-images/crew/image-mark-shuttleworth.webp"
+altText: "Mark Shuttleworth speaking into a handheld microphone during a presentation."
 ---

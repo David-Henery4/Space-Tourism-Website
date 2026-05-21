@@ -6,4 +6,5 @@ slug: "mars"
 distance: "225 mil. km"
 travelTime: "9 months"
 image: "../../assets/content-images/image-mars.webp"
+altText: "Mars partially illuminated in space, showing its dusty reddish-brown surface."
 ---

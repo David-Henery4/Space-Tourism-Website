@@ -12,16 +12,16 @@ const { desktopImage, mobileImage, tabletImage } = Astro.props;
 <Image
   class="absolute -z-1 inset-0 w-full h-full min-h-svh object-center object-cover mobile:hidden"
   src={mobileImage}
-  alt=""
+  alt="Earth viewed from space at night, with glowing city lights along the curved horizon beneath a dark star-filled sky."
 />
 <Image
   class="absolute -z-1 inset-0 w-full h-full min-h-svh object-center object-cover hidden mobile:block laptop:hidden"
   src={tabletImage}
-  alt=""
+  alt="Wide view of Earth from orbit at night, showing illuminated cities, cloud formations, and a starry space backdrop."
 />
 <Image
   id="background-images"
   class="absolute -z-1 inset-0 w-full h-full min-h-svh object-center object-cover hidden laptop:block"
   src={desktopImage}
-  alt=""
+  alt="Angled view of Earth from space at night, featuring bright city lights, cloud patterns, and stars against deep black space."
 />

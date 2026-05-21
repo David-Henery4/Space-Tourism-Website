@@ -11,9 +11,7 @@ const renderer = new THREE.WebGLRenderer({ alpha: true });
 const scene = new THREE.Scene();
 const loader = new GLTFLoader();
 
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-if (destinationImageContainer){
+if (destinationImageContainer) {
   camera = new THREE.PerspectiveCamera(
     75,
     destinationImageContainer.clientWidth /
@@ -22,8 +20,15 @@ if (destinationImageContainer){
     1000,
   );
   currentPageSlug = destinationImageContainer.dataset.slug;
-  camera.position.z = 1100;
+  camera.position.z = 1000;
   destinationImageContainer.appendChild(renderer.domElement);
+
+  // Ensure renderer matches the container size and camera aspect before first render
+  resizeRendererToDisplaySize(renderer);
+  camera.aspect =
+    renderer.domElement.clientWidth / renderer.domElement.clientHeight;
+  camera.updateProjectionMatrix();
+
   animate();
 }
 
@@ -171,4 +176,3 @@ scene.add(topLight);
 
 const ambientLight = new THREE.AmbientLight(0x333333, 1);
 scene.add(ambientLight);
-
