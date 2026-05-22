@@ -1,8 +1,7 @@
 ---
 import Logo from "../assets/svgs/logo.svg";
 import BurgerIcon from "../assets/svgs/icon-hamburger.svg";
-import {Sidebar, NavigationLinksList} from "@components/navigation";
-
+import { Sidebar, NavigationLinksList } from "@components/navigation";
 ---
 
 <script src="../scripts/sidebar.ts"></script>
@@ -12,7 +11,7 @@ import {Sidebar, NavigationLinksList} from "@components/navigation";
   class="col-start-1 col-end-13 grid grid-cols-main-mobile mobile:grid-cols-main-tablet tablet:grid-cols-main-laptop tablet:mt-5 laptop:mt-7.5 desktop:grid-cols-main-desktop desktop:mt-10"
 >
   <div
-    class="w-full py-6 col-start-2 col-end-12 flex justify-between items-center mobile-large:p-0 mobile-large:col-end-13 laptop:grid laptop:grid-cols-navigation-laptop laptop:col-start-1 desktop:grid-cols-navigation-desktop"
+    class="w-full max-w-360 mx-auto py-6 col-start-2 col-end-12 flex justify-between items-center mobile-large:p-0 mobile-large:col-end-13 laptop:grid laptop:grid-cols-navigation-laptop laptop:col-start-1 desktop:grid-cols-navigation-desktop"
   >
     <a href="/" class="mobile-large:py-6 laptop:pl-9.5 desktop:pl-13.75">
       <Logo />
@@ -27,7 +26,7 @@ import {Sidebar, NavigationLinksList} from "@components/navigation";
       <BurgerIcon />
     </div>
 
-    <Sidebar/>
+    <Sidebar />
 
     <NavigationLinksList />
   </div>

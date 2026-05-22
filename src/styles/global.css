@@ -15,6 +15,7 @@
   --breakpoint-desktop: 79.25em; /* 1268px */
   --breakpoint-desktop-xl-large: 90em; /* 1440px */
 
+  --max-width-main-content: 1110px;
 
   /* Spacing */
   /* --spacing-layout-mob: 24px; */
