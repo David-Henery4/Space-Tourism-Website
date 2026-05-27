@@ -1,0 +1,76 @@
+---
+interface Props {
+  // Core SEO
+  pageTitle: string;
+  description: string;
+
+  // Canonical URL
+  canonicalURL: string;
+
+  // Social Media & Sharing
+  ogImage: string;
+  ogTitle?: string;
+  ogDescription?: string;
+
+  // Additional SEO Signals
+  keywords?: string;
+  author?: string;
+
+  // Indexing Control
+  robots?: string;
+
+  // Social Specific
+  twitterHandle?: string;
+
+  // Optional but Useful
+  image?: string;
+}
+
+const {
+  pageTitle,
+  description,
+  canonicalURL,
+  ogImage,
+  ogTitle,
+  ogDescription,
+  keywords,
+  author,
+  robots,
+  twitterHandle,
+  image,
+} = Astro.props;
+---
+
+<!-- Core Meta Tags -->
+<title>{pageTitle} | Space Tourism</title>
+<meta name="description" content={description} />
+<meta name="viewport" content="width=device-width" />
+<meta charset="UTF-8" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Keywords (optional but good for relevance) -->
+{keywords && <meta name="keywords" content={keywords} />}
+
+<!-- Author -->
+{author && <meta name="author" content={author} />}
+
+<!-- Robots (indexing control) -->
+{robots && <meta name="robots" content={robots} />}
+
+<!-- Open Graph (Social Media Sharing) -->
+<meta property="og:title" content={ogTitle || pageTitle} />
+<meta property="og:description" content={ogDescription || description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:type" content="website" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={ogTitle || pageTitle} />
+<meta name="twitter:description" content={ogDescription || description} />
+<meta name="twitter:image" content={ogImage} />
+{twitterHandle && <meta name="twitter:creator" content={twitterHandle} />}
+
+

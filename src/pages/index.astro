@@ -7,7 +7,19 @@ import homeBgImageDesktop from "../assets/bg-images/home/background-home-desktop
 import { BackgroundImages } from "../components";
 ---
 
-<BaseLayout pageTitle="Astro | Home">
+<BaseLayout
+  SEOInfo={{
+    pageTitle: "Space Tourism — Explore the Cosmos",
+    description:
+      "Official Space Tourism — destinations, crew, and technology to plan your next interstellar journey.",
+    canonicalURL: "https://space-tourism.example/",
+    ogImage: "https://space-tourism.example/assets/meta-image/meta-image.png",
+    ogDescription:
+      "Official Space Tourism — destinations, crew, and technology to plan your next interstellar journey.",
+    ogTitle: "Space Tourism — Explore the Cosmos",
+    image: "https://space-tourism.example/assets/meta-image/meta-image.png",
+  }}
+>
   <BackgroundImages
     desktopImage={homeBgImageDesktop}
     mobileImage={homeBgImageMobile}

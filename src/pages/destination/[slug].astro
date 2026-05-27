@@ -26,7 +26,19 @@ import { TextContent, ImageContent } from "../../components/destination";
 
 <script src="../../scripts/3D-loader/mainLoader.ts"></script>
 
-<BaseLayout>
+<BaseLayout
+  SEOInfo={{
+    pageTitle: "Space Tourism — The Destinations",
+    description:
+      "Explore the various destinations we offer and discover what makes these worlds unique in the Space Tourism experience.",
+    canonicalURL: "https://space-tourism.example/",
+    ogImage: "https://space-tourism.example/assets/meta-image/meta-image.png",
+    ogDescription:
+      "Explore the various destinations we offer and discover what makes these worlds unique in the Space Tourism experience.",
+    ogTitle: "Space Tourism — The Destinations",
+    image: "https://space-tourism.example/assets/meta-image/meta-image.png",
+  }}
+>
   <BackgroundImages
     mobileImage={destinationBgImageMobile}
     tabletImage={destinationBgImageTablet}

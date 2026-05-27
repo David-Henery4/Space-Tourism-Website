@@ -25,7 +25,19 @@ import crewBgImageDesktop from "../../assets/bg-images/crew/background-crew-desk
 import { CrewImage, CarouselDots, CrewMemberInfo } from "../../components/crew";
 ---
 
-<BaseLayout>
+<BaseLayout
+  SEOInfo={{
+    pageTitle: "Space Tourism — The Crew",
+    description:
+      "Learn more about the crew and learn more about their role in the Space Tourism mission.",
+    canonicalURL: "https://space-tourism.example/",
+    ogImage: "https://space-tourism.example/assets/meta-image/meta-image.png",
+    ogDescription:
+      "Learn more about the crew and learn more about their role in the Space Tourism mission.",
+    ogTitle: "Space Tourism — The Crew",
+    image: "https://space-tourism.example/assets/meta-image/meta-image.png",
+  }}
+>
   <BackgroundImages
     mobileImage={crewBgImageMobile}
     tabletImage={crewBgImageTablet}

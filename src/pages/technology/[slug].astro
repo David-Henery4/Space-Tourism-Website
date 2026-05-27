@@ -28,7 +28,19 @@ import {
 } from "@components/technology";
 ---
 
-<BaseLayout>
+<BaseLayout
+  SEOInfo={{
+    pageTitle: "Space Tourism — The Technology",
+    description:
+      "Discover the tech we use and learn how the mission systems power the Space Tourism experience.",
+    canonicalURL: "https://space-tourism.example/",
+    ogImage: "https://space-tourism.example/assets/meta-image/meta-image.png",
+    ogDescription:
+      "Discover the tech we use and learn how the mission systems power the Space Tourism experience.",
+    ogTitle: "Space Tourism — The Technology",
+    image: "https://space-tourism.example/assets/meta-image/meta-image.png",
+  }}
+>
   <BackgroundImages
     mobileImage={technologyBgImageMobile}
     tabletImage={technologyBgImageTablet}
