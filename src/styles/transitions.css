@@ -1,4 +1,7 @@
 
+/** Would only need this if **/
+/** We wanted viewTransitions to apply to every page **/
+/** On a multi-page site. (MPA) **/
 
 /* @view-transition {
   navigation: auto;
@@ -7,6 +10,8 @@
 /* ::view-transition-group(root){
   animation: none;
 } */
+
+/*************************************************************/
 
 #navigation-bar {
   view-transition-name: none;

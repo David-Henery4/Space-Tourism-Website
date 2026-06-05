@@ -1,10 +1,5 @@
-// Remember to handle the error responses for the above API calls.
 
-// Three ways I want to try and use to solve this problem
 
-// 1) Pure CSS No javascript (MPS)
-// 2) Mix of both - Use Javascript to only target the tabs for transition and have the page update when switching pages.
-// 3) Only Javascript to trigger the transitions, Ignore/Cancel the full page refresh & update the URL and the DOM.
 import {
   updateCrewContent,
   updateDestinationContent,
