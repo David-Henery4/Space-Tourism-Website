@@ -2,6 +2,7 @@ import type { APIRoute } from "astro";
 import { getImage } from "astro:assets";
 import { getCollection } from "astro:content";
 
+
 export const GET = (async ({ params, request }) => {
   const slug = params.slug;
   
